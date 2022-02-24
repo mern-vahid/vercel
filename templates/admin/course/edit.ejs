@@ -1,0 +1,120 @@
+<div class="container-fluid p-4">
+    <div class="row">
+      <!-- Page header -->
+      <div class="col-lg-12 col-md-12 col-12">
+        <div class="border-bottom pb-4 mb-4 d-md-flex align-items-center justify-content-between">
+            <div class="mb-3 mb-md-0">
+            <h1 class="mb-1 h2 fw-bold">Edit Course <%= course.name %> </h1>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="/admin">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item"><a href="/admin/course"></a>Courses</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Edit Course
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div>
+            <a href="/admin/course" class="btn btn-outline-white">Back to All Categories</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-9 col-lg-8 col-md-12 col-12">
+        <!-- Card -->
+        <div class="card border-0 mb-4">
+          <!-- Card header -->
+          <div class="card-header">
+            <h4 class="mb-0">Edit Course</h4>
+          </div>
+          <!-- Card body -->
+          <div class="card-body">
+        
+            <div class="mt-4">
+              <form action="/admin/course/<%=course.id%>/edit?_csrf=<%=csrfToken%>" method="POST" enctype="multipart/form-data">
+                <%- csrf_token %> 
+                <!-- Form -->
+                <div class="row">
+
+                  <div class="mb-3 col-md-9">
+                    <!-- Name -->
+                    <label for="postName" class="form-label">Name</label>
+                    <input type="text" value="<%= course.name %>" id="postName" name="name" class="form-control text-dark" placeholder="Category Name">
+                    <small>
+                      <%- errors_helper(error, "name") %> 
+                    </small>
+                  </div>
+
+
+                  <div class="mb-3 col-md-9">
+                    <!-- thumbnail -->
+                    <label for="image" class="form-label">Thumbnail</label>
+                    <input type="file" id="image" name="thumbnail" class="form-control text-dark" value="/upload/course/<%= course.thumbnail %>">
+                    <small>
+                      <%- errors_helper(error, "thumbnail") %> 
+                    </small>
+                  </div
+
+                  <!-- Category -->
+                  <div class="mb-3 col-md-9">
+                    <label class="form-label">Category</label>
+                    <select class="selectpicker" data-width="100%" name="category" multiple>
+                      <% categories.map(category => { %> 
+                        <option value="<%= category.id %>" ><%= category.name %> </option>
+                      <% }) %> 
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <small>
+                <%- errors_helper(error, "category") %> 
+              </small>
+              <!-- button -->
+              <input type="submit" class="btn btn-primary" value="Save to Draft"> 
+              <a href="#" class="btn btn-outline-white">
+                Cancel
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-12 col-12">
+        <!-- Card -->
+        <div class="card mt-4 mt-lg-0 mb-4">
+          <!-- Card Header -->
+          <div class="card-header d-lg-flex">
+            <h4 class="mb-0">Course Info</h4>
+          </div>
+          <!-- List Group -->
+          <ul class="list-group list-group-flush">
+
+            <li class="list-group-item">
+              <span class="text-body">Status</span>
+              <h5>
+                <span class="badge-dot bg-dark d-inline-block me-1"></span>Default (Draft)
+              </h5>
+            </li>
+            <li class="list-group-item">
+              <span class="text-body">Created by</span>
+              <div class="d-flex mt-2 ">
+                <div class="">
+                  <%= user.f_name %> <%= user.l_name %> 
+
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <span class="text-body">Created at</span>
+              <h5>Now</h5>
+            </li>
+          </ul>
+          <!-- Card -->
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,202 @@
+
+    <!-- Container fluid -->
+    <div class="container-fluid p-4">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <!-- Page Header -->
+                <div class="border-bottom pb-4 mb-4 d-flex justify-content-between align-items-center">
+                    <div class="mb-2 mb-lg-0">
+                        <h1 class="mb-1 h2 fw-bold">
+                            Admin
+                            <span class="fs-5 text-muted">( <%= admin.length %>  )</span>
+                        </h1>
+                        <!-- Breadcrumb  -->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="../dashboard/admin-dashboard.html">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#">User</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Admin
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="nav btn-group" role="tablist">
+                        <button class="btn btn-outline-white" data-bs-toggle="tab" data-bs-target="#tabPaneGrid" role="tab" aria-controls="tabPaneGrid" aria-selected="false">
+            <span class="fe fe-grid"></span>
+          </button>
+                        <button class="btn btn-outline-white active" data-bs-toggle="tab" data-bs-target="#tabPaneList" role="tab" aria-controls="tabPaneList" aria-selected="true">
+            <span class="fe fe-list"></span>
+          </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <!-- Tab -->
+                <div class="tab-content">
+                    <!-- Tab Pane -->
+                    <div class="tab-pane fade" id="tabPaneGrid" role="tabpanel" aria-labelledby="tabPaneGrid">
+                        <div class="mb-4">
+                            <input type="search" class="form-control" placeholder="Search Students">
+                        </div>
+                        <div class="row">
+                            <% admin.map(admin => { %>
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                                    <!-- Card -->
+                                    <div class="card mb-4">
+                                        <!-- Card body -->
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <div class="position-relative avatar avatar-lg">
+                                                    <img src="/upload/thumbnail/<%=admin.thumbnail%> " class="rounded-circle avatar-xl mb-3" alt="">
+                                                    <a href="#" class="position-absolute mt-10 ms-n5">
+                                                        <span class="status bg-success"></span>
+                                                    </a>
+                                                </div>
+                                                <h4 class="mb-0"><%= admin.first_name %> <%= admin.last_name %> </h4>
+                                                <p class="mb-0">
+                                                    <%= admin.email %> 
+                                                </p>
+                                            </div>
+                                            <div class="d-flex justify-content-between border-bottom py-2 mt-6">
+                                                <span>IsAcive : </span>
+                                                <span class="text-dark"><% if(admin.is_active == true) { %><i style="font-size: 16px !important" class="fe fe-check-circle me-1 fs-6 text-success"></i> <% }else{ %><i class="fe fe-alert-circle me-1 fs-6 text-danger"></i> <% } %>  </span>
+                                            </div>
+                                            <% if(user.is_owner == true){ %> 
+                                            <div class="d-flex justify-content-between border-bottom py-2">
+                                                <span>IsOwner : </span>
+                                                <span class="text-dark"><% if(admin.is_owner == true) { %><i style="font-size: 16px !important" class="fe fe-check-circle me-1 fs-6 text-success"></i> <% }else{ %><i class="fe fe-alert-circle me-1 fs-6 text-danger"></i> <% } %>  </span>
+                                            </div>
+                                            <% } %> 
+                                            <div class="d-flex justify-content-between pt-2">
+                                                    <span>IsVerify : </span>
+                                                    <span class="text-dark"><% if(admin.is_verify == true) { %><i style="font-size: 16px !important" class="fe fe-check-circle me-1 fs-6 text-success"></i> <% }else{ %><i class="fe fe-alert-circle me-1 fs-6 text-danger"></i> <% } %>  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>  
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <!-- Pagination -->
+                                <nav>
+                                    <ul class="pagination justify-content-center mb-0">
+                                        <li class="page-item disabled">
+                                            <a class="page-link mx-1 rounded" href="#" tabindex="-1" aria-disabled="true"><i class="mdi mdi-chevron-left"></i></a>
+                                        </li>
+                                        <li class="page-item active">
+                                            <a class="page-link mx-1 rounded" href="#">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link mx-1 rounded" href="#">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link mx-1 rounded" href="#">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link mx-1 rounded" href="#"><i class="mdi mdi-chevron-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Pane -->
+                    <div class="tab-pane fade active show" id="tabPaneList" role="tabpanel" aria-labelledby="tabPaneList">
+                        <!-- Card -->
+                        <div class="card">
+                            <!-- Card Header -->
+                            <div class="card-header">
+                                <input type="search" class="form-control" placeholder="Search Students">
+                            </div>
+                            <!-- Table -->
+                            <div class="table-responsive">
+                                <table class="table mb-0 text-nowrap">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col" class="border-0">Name</th>
+                                            <th scope="col" class="border-0">Email</th>
+                                            <th scope="col" class="border-0">Active Account</th>
+                                            <th scope="col" class="border-0">
+                                                Teacher
+                                            </th>
+                                            <th scope="col" class="border-0">Verify Account</th>
+                                            <% if(user.is_owner === true) { %>
+                                                <th scope="col" class="border-0"></th> 
+                                            <% } %> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% admin.map(a => { %>
+                                            <tr>
+                                                <td class="align-middle border-top-0">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="position-relative avatar avatar-md" style="margin-right: 20px !important">
+                                                            <img src="/upload/thumbnail/<%= a.thumbnail.length > 0 ? a.thumbnail : 'profile.jpg' %>" alt="" class="rounded-circle avatar-md me-2">
+                                                            <a href="#" class="position-absolute mt-5 ms-n4">
+                                                                <span class="status bg-success"></span>
+                                                            </a>
+                                                        </div>
+                                                        <h5 class="mb-0"><%= a.first_name %> <%= a.last_name %></h5>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle border-top-0">
+                                                    <%= a.email %> 
+                                                </td>
+                                                <td class="align-middle border-top-0 text-center">
+                                                    <%- check(a.is_active) %> 
+                                                </td>
+                                                <td class="align-middle border-top-0 text-center"><%- check(a.is_tech) %> </td>
+                                                <td class="align-middle border-top-0 text-center">
+                                                    <%- check(a.is_verify) %> 
+                                                </td>
+    
+                                                <% if(user.is_owner == true) { %>
+                                                    <td class="text-muted px-4 py-3 align-middle border-top-0">
+                                                        <span class="dropdown dropstart">
+                                <a class="text-muted text-decoration-none" href="#" role="button" id="courseDropdown" data-bs-toggle="dropdown" data-bs-offset="-20,20" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <span class="dropdown-menu" aria-labelledby="courseDropdown" style="">
+                                  <span class="dropdown-header">Settings</span>
+                                  <a class="dropdown-item" href="/admin/user/<%=a.id%>/active"><i class="fe fe-user dropdown-item-icon"></i>Active</a>
+                                                        <a class="dropdown-item" href="/admin/user/<%=a.id%>/admin"><i class="fe fe-users dropdown-item-icon"></i>Admin</a>
+                                                        <a class="dropdown-item" href="/admin/user/<%=a.id%>/teacher"><i class="fe fe-briefcase dropdown-item-icon"></i>Teacher</a>
+                                                        <a class="dropdown-item" href="/admin/user/<%=a.id%>/vip"><i class="fe fe-star dropdown-item-icon"></i>Vip</a>
+                                                        </span>
+                                                        </span>
+                                                    </td>
+                                                    <% } %>  
+                                            </tr>
+                                            <% }) %>  
+                                    </tbody>
+                                </table>
+                                <nav>
+                                    <ul class="pagination justify-content-center pb-3 pt-4">
+                                        <li class="page-item disabled">
+                                            <a class="page-link mx-1 rounded" href="#" tabindex="-1" aria-disabled="true"><i class="mdi mdi-chevron-left"></i></a>
+                                        </li>
+                                        <li class="page-item active">
+                                            <a class="page-link mx-1 rounded" href="#">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link mx-1 rounded" href="#">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link mx-1 rounded" href="#">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link mx-1 rounded" href="#"><i class="mdi mdi-chevron-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,54 @@
+<div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center g-0 min-vh-100">
+      <div class="col-lg-5 col-md-8 py-8 py-xl-0">
+        <!-- Card -->
+        <div class="card shadow ">
+          <!-- Card body -->
+          <div class="card-body p-6">
+            <div class="mb-4">
+              <a href="/"><img src="/images/logo-icon.svg" class="mb-4" alt=""></a>
+              <h1 class="mb-1 fw-bold">Forgot Password</h1>
+              <span>Don’t have forgot password <a href="/login" class="ms-1">Sgin In</a></span>
+            </div>
+            <!-- Form -->
+            <form action="/forgot" method="POST">
+                <%- csrf_token %>
+
+                <% if(error.length > 0) { %>
+                    <div class="mt-3 mb-3">
+                        <span class="text-danger"> <%= error %>  </span>
+                        <hr class="bg bg-danger" />
+                    </div>						
+                <% } %>  
+                <% if(success.length > 0) { %>
+                  <div class="mt-3 mb-3">
+                      <span class="text-success"> <%= success %>  </span>
+                      <hr class="bg bg-success" />
+                  </div>						
+              <% } %>  
+                  <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" name="email" placeholder="Email Adderss"
+                  required>
+              </div>
+                  <!-- Checkbox -->
+              <div class="d-lg-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="username" name="username">
+                  <label class="form-check-label " for="username">Forgot UserName ?</label>
+                </div>
+
+              </div>
+              <div>
+                    <!-- Button -->
+                  <div class="d-grid">
+                <button type="submit" class="btn btn-outline-secondary ">Send Mail</button>
+              </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

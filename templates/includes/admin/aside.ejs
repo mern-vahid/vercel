@@ -1,0 +1,84 @@
+<nav class="navbar-vertical navbar">
+    <div class="nav-scroller">
+        <!-- Brand logo -->
+        <a class="navbar-brand" href="/admin">
+            <img src="/images/logo-inverse.svg" alt="" />
+        </a>
+        <!-- Navbar nav -->
+        <ul class="navbar-nav flex-column" id="sideNavbar">
+            <!-- Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link  collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#navDashboard" aria-expanded="false" aria-controls="navDashboard">
+                    <i class="nav-icon fe fe-home me-2"></i> Dashboard
+                </a>
+                <div id="navDashboard" class="collapse" data-bs-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item ">
+                            <a class="nav-link  active " href="../../pages/dashboard/admin-dashboard.html">
+                                    Overview
+                                </a>
+                        </li>
+                        <!-- Nav item -->
+                        <li class="nav-item ">
+                            <a class="nav-link " href="../../pages/dashboard/dashboard-analytics.html">
+                                    Analytics
+
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <!-- Users -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#navProfile" aria-expanded="false" aria-controls="navProfile">
+                    <i class="nav-icon fe fe-user me-2"></i> User
+                </a>
+                <div id="navProfile" class="collapse" data-bs-parent="#sideNavbar" >
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/admin/user/users">User</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link " href="/admin/user/admin">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <!-- Categories -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#navCategory" aria-expanded="false" aria-controls="navCategory">
+                    <i class="nav-icon fe fe-folder me-2"></i> Category
+                </a>
+                <div id="navCategory" class="collapse" data-bs-parent="#navCategory" >
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/admin/category/">List</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link " href="/admin/category/create">Add New</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <!-- Courses -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#navCourse" aria-expanded="false" aria-controls="navCategory">
+                    <i class="nav-icon fe fe-book me-2"></i> Courses
+                </a>
+                <div id="navCourse" class="collapse" data-bs-parent="#navCourse" >
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/admin/course/">List</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link " href="/admin/course/create">Add New</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
